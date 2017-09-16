@@ -11,19 +11,17 @@ var concat = require('gulp-concat');
 var htmlReplace = require('gulp-html-replace');
 
 gulp.task('less', function() {
-    gulp.src('./src/less/*.less')
+    gulp.src('./src/baicaijia/less/*.less')
         .pipe(less())
         .pipe(cleancss())
         .pipe(gulp.dest('./dist/baicaijia/css'));
 });
 gulp.task('html', function() {
-    gulp.src(['src/**/*.html', 'src/index.html'])
+    gulp.src(['src/baicaijia/**/*.html', 'src/baicaijia/index.html'])
         .pipe(htmlReplace({
-            style: gulp.src('src/html/common/style.html'),
-            aside: gulp.src('src/html/common/aside.html'),
-            header: gulp.src('src/html/common/header.html'),
-            courseEditHeader: gulp.src('src/html/common/course/header.html'),
-            courseEditAside: gulp.src('src/html/common/course/aside.html')
+            style: gulp.src('src/baicaijia/html/common/style.html'),
+            aside: gulp.src('src/baicaijia/html/common/aside.html'),
+            header: gulp.src('src/baicaijia/html/common/header.html')
         }))
         .pipe(htmlmin({
             collapseWhitespace: true, // 去掉空白字符
@@ -33,7 +31,7 @@ gulp.task('html', function() {
         }))
         .pipe(gulp.dest('dist/baicaijia'));
 
-    gulp.src('dist/index.html')
+    gulp.src('dist/baicaijia/index.html')
         .pipe(gulp.dest('./'));
 });
 
