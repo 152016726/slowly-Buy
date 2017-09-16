@@ -70,9 +70,9 @@ table {
   border-collapse: collapse;
 }
 body {
-  font: 12px/150% Arial, Verdana, "\5b8b\4f53";
+  font-family: "微软雅黑";
   /*unitedCode的写法，宋体的写法*/
-  color: #666;
+  font-size: 12px;
   background: #fff;
 }
 /*清除浮动*/
@@ -89,11 +89,12 @@ body {
   *zoom: 1;
 }
 a {
-  color: #666;
+  color: #000;
   text-decoration: none;
 }
 a:hover {
   color: #C81623;
+  text-decoration: none;
 }
 h1,
 h2,
@@ -143,3 +144,115 @@ body {
   background-color: #fff;
 }
 /*css初始化完成*/
+html,
+body,
+.sort_view,
+.container,
+.right {
+  height: 100%;
+}
+.sort_view {
+  padding-top: 88px;
+  position: relative;
+}
+header {
+  height: 50px;
+  width: 100%;
+  padding: 7px 50px;
+  position: absolute;
+  top: 0;
+  background: #ff841d;
+}
+header .back {
+  position: absolute;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  top: 5px;
+  left: 10px;
+  font-size: 20px;
+  color: #fff;
+}
+header .menu {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-image: url(../../../images/header_app.png);
+  background-repeat: no-repeat;
+  background-size: 35px 35px;
+}
+header h4 {
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: 700;
+}
+.searchbtn {
+  top: 50px;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+.searchbtn .category_nav {
+  width: 190%;
+}
+.searchbtn .category_nav li {
+  height: 38px;
+  font-size: 14px;
+  line-height: 36px;
+  float: left;
+}
+.searchbtn .category_nav li a {
+  display: block;
+  height: 100%;
+  padding: 0 10px;
+  width: 100%;
+  text-align: center;
+}
+.searchbtn .category_nav .active {
+  border-bottom: 2px solid red;
+  color: #f10215;
+}
+.goodshow #goods {
+  font-size: 14px;
+  font-family: "微软雅黑";
+  font-weight: 500;
+  color: #000;
+}
+.goodshow #goods li {
+  margin: 6px auto;
+  background-color: #ffffff;
+  padding: 10px 5px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.goodshow #goods li .gobuy {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.goodshow #goods li .pic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 135px;
+  height: 130px;
+}
+.goodshow #goods li .pic img {
+  width: 130px;
+  height: 130px;
+  border: none;
+}
+.goodshow #goods li .t {
+  padding-left: 135px;
+}
+.goodshow #goods li .t .y {
+  color: #000;
+  font-size: 14px;
+}
