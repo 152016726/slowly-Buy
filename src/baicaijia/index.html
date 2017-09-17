@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./less/index.css">
-    <title>慢慢买</title>
+    <title>慢慢买白菜价</title>
 </head>
 
 <body>
@@ -19,52 +19,36 @@
         </header>
         <div class="searchbtn clearfix" id="wrapper">
             <ul class="category_nav clearfix ">
-                <!-- <li class="active">
-                    <a href="javascript:; ">全部</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">热销</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">9块邮</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">19块邮</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">数码家电</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">居家</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">美食</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">男装</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">女装</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">鞋包配饰</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">文体</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">母婴</a>
-                </li>
-                <li>
-                    <a href="javascript:; ">美妆</a>
-                </li> -->
+
             </ul>
+            <div class="searchimg">
+                <span class="glyphicon glyphicon-search"></span>
+            </div>
         </div>
         <div class="goodshow">
             <ul id="goods">
 
             </ul>
         </div>
+        <!--底部-->
+        <div class="m_foot">
+            <!--底部登陆-->
+            <div class="m_login">
+                <a href="">登录</a>
+                <a href="">注册</a>
+                <a href="" style="width:40%;border:0;"><span class="glyphicon glyphicon-arrow-up"></span>返回顶部</a>
+            </div>
+            <!--尾部-->
+            <div class="m_footer">
+                <p class='m_en'>
+                    m.manmanbuy.com
+                    <img src="" alt="">
+                </p>
+            </div>
+        </div>
+        <!-- 固定定位置顶 -->
+        <a class='m_iconTop' href=""><img src="../../images/top.png" alt="" width='45'></a>
+
     </div>
     <script src="../../dist/baicaijia/js/lib.js "></script>
     <script src="js/itcastEvent.js"></script>
@@ -88,20 +72,27 @@
     <script type="text.temp" id="listgoods">
         {{each $data item i}}
         <li class="clearfix pr" data-id="{{item.productId}}" data-tid="{{item.titleId}}">
-            {{@ item.productCoupon}} {{@ item.productCouponRemain}} {{@ item.productHref}} {{@ item.productImg}} {{@ item.productName}} {{@ item.productPrice}}
+            <a href="javascript:;"></a>
+            <div class="pic">{{@ item.productImg}} </div>
+            <div class="info">
+                <div class="t">
+                    <p class="title1">{{@ item.productName}}</p>
+                    <p class="title2">{{@ item.productPrice}}</p>
+                </div>
+                <div class="p">
+                    {{@ item.productCouponRemain}} {{@ item.productCoupon}} {{@ item.productHref}}
+
+                </div>
+            </div>
+
         </li>
         {{/each}}
     </script>
     <script>
-        $.get("http://139.199.192.48:9090/api/getbaicaijiaproduct", {
-            titleid: 0
-        }, function(data) {
-            $("#goods").html(template("listgoods", data.result));
-        })
-    </script>
-    <script>
         $.get("http://139.199.192.48:9090/api/getbaicaijiatitle", function(data) {
             $(".category_nav").html(template("listSample", data.result));
+            //设置第一个li的class类名
+            $(".category_nav").children().eq(0).addClass("active");
         })
         $(".category_nav").on("click", "a", function() {
             var data = parseInt($(this).attr("data-id"));
@@ -111,6 +102,13 @@
             }, function(data) {
                 $("#goods").html(template("listgoods", data.result));
             })
+        })
+
+        //商品展示回显
+        $.get("http://139.199.192.48:9090/api/getbaicaijiaproduct", {
+            titleid: 0
+        }, function(data) {
+            $("#goods").html(template("listgoods", data.result));
         })
     </script>
 </body>

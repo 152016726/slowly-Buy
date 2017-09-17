@@ -16,6 +16,12 @@ gulp.task('less', function() {
         .pipe(cleancss())
         .pipe(gulp.dest('./dist/baicaijia/css'));
 });
+gulp.task('lesses', function() {
+    gulp.src('./src/guoneisales/less/*.less')
+        .pipe(less())
+        .pipe(cleancss())
+        .pipe(gulp.dest('./dist/guoneisales/css'));
+});
 gulp.task('html', function() {
     gulp.src(['src/baicaijia/**/*.html', 'src/baicaijia/index.html'])
         .pipe(htmlReplace({
@@ -33,6 +39,22 @@ gulp.task('html', function() {
 
     gulp.src('dist/baicaijia/index.html')
         .pipe(gulp.dest('./'));
+});
+
+gulp.task('htmls', function() {
+    gulp.src(['src/guoneisales/**/*.html', 'src/guoneisales/index.html'])
+        .pipe(htmlReplace({
+            style: gulp.src('src/guoneisales/html/common/style.html'),
+            aside: gulp.src('src/guoneisales/html/common/aside.html'),
+            header: gulp.src('src/guoneisales/html/common/header.html')
+        }))
+        .pipe(htmlmin({
+            collapseWhitespace: true, // 去掉空白字符
+            minifyJS: true, //压缩页面JS
+            minifyCSS: true, //压缩页面CSS
+            removeComments: true //清除HTML注释
+        }))
+        .pipe(gulp.dest('dist/guoneisales'));
 });
 
 //包装第三方插件
@@ -57,7 +79,9 @@ var jsModules = [
     //首页
     'src/baicaijia/js/index.js',
     //用户
-    'src/baicaijia/js/content.js'
+    'src/baicaijia/js/content.js',
+    'src/guoneisales/js/index.js',
+    'src/guoneisales/js/sample.js'
 ]
 gulp.task('js', function() {
     jsModules.forEach(function(jspath) {
@@ -76,4 +100,4 @@ gulp.task('build', function() {
     gulp.run(['less', 'js', 'jsLib', 'html']);
 });
 //添加默认追踪的任务
-gulp.task('default', ['html', 'less', 'js', 'jsLib']);
+gulp.task('default', ['html', 'less', 'lesses', 'js', 'htmls', 'jsLib']);
