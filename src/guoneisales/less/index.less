@@ -46,6 +46,7 @@ header{
 }
 //content内容
 .content{
+ 
   ul{
     li{
       width: 50%;
@@ -185,21 +186,35 @@ header{
         margin-top:3px;
       }
     }
+
+  }
     .shareLink{ 
+      height: 36px;
+      line-height: 36px;
       font-size: 14px;
-    padding: 20px 10px 0;
-    color: #808080;
-    width: 350px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    }
+      color: #000;  
+      width: 100%;
+      background-color: #ebebeb;
+      vertical-align: middle;
+      background: -webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#ebebeb));
+      span{
+        float: left;
+        width: 200px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .topic{
+        padding-left: 8px;
+       float:left;
+      }
   }
 }
 
   //底部固定
 /*底部*/
 .m_foot{
+  position: relative;
         /*底部登陆*/
         .m_login{
                 margin-top: 10px;
@@ -236,6 +251,58 @@ header{
                 font-size: 14px;
             }
         }
+          //链接
+          .m-1{
+            >a:nth-child(1){
+              color:#f10215;
+              margin-right:5px;
+            }
+          }
+
+          //aPP下载宣传栏
+        .friendlink{
+            position: absolute;
+            margin-left:5px;
+            width: 100%;
+            top:-60px;
+            left:0;
+            font-size: 12px;
+            margin-top: 20px;
+            padding:10px;
+            background: #434343;  
+            .logo{
+              float:left;
+              width: 64px;
+              height: 64px;
+            }
+            .app{
+              float:left;
+              padding-left: 10px;
+              .p11{
+                font-size: 18px;
+                color:#fff;
+              }
+              .p22{
+                margin-top:5px;
+                font-size:14px;
+                color:#fee6c2;
+              }
+            }
+            .open{
+              position: absolute;
+              top:10px;
+              right:10px;
+              font-size: 14px;
+              width: 80px;
+              height: 30px;
+              text-align: center;
+              line-height: 30px;
+              color:#fff;
+              background: #6db110;
+              border-radius: 4px;
+            }
+        }
+
 }
       //慢APP下载
 .m_app{
