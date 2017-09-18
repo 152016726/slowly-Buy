@@ -5,7 +5,7 @@ html,body,.sort_view,.container,.right{
 .sort_view {
     padding-top: 88px;
     position: relative;
-    margin-right:2px;
+    padding-right:2px;
 } 
 //头部 
 header{
@@ -86,11 +86,14 @@ header{
 }
 //商品展示页面
 .goodshow{
+  width: 100%;
+  overflow: hidden;
   #goods{
     font-size:14px;
     font-family: "微软雅黑";
     font-weight: 500;
     color:#000;
+    
     li{
       margin: 6px auto;
       background-color: #ffffff;
@@ -105,6 +108,13 @@ header{
         top:-6px;
         left:0;
         background-color:#F7F7F7;
+      }
+      .buyfor{
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
       }
         .gobuy{
           display:block;
@@ -236,6 +246,14 @@ header{
     }
   }
 }
+//loading盒子
+.pageloading{
+  width:100%;
+  margin-top:15px;
+  font-size: 16px;
+  background: #f8f8f8;
+  text-align: center;
+}
 //底部固定
 /*底部*/
     .m_foot{
@@ -275,6 +293,13 @@ header{
                 font-size: 14px;
             }
         }
+          //链接
+          .m-1{
+            >a:nth-child(1){
+              color:#f10215;
+              margin-right:5px;
+            }
+          }
     }
     /*返回顶部图标*/
     .m_iconTop{

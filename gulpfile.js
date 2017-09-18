@@ -24,11 +24,6 @@ gulp.task('lesses', function() {
 });
 gulp.task('html', function() {
     gulp.src(['src/baicaijia/**/*.html', 'src/baicaijia/index.html'])
-        .pipe(htmlReplace({
-            style: gulp.src('src/baicaijia/html/common/style.html'),
-            aside: gulp.src('src/baicaijia/html/common/aside.html'),
-            header: gulp.src('src/baicaijia/html/common/header.html')
-        }))
         .pipe(htmlmin({
             collapseWhitespace: true, // 去掉空白字符
             minifyJS: true, //压缩页面JS
@@ -36,18 +31,10 @@ gulp.task('html', function() {
             removeComments: true //清除HTML注释
         }))
         .pipe(gulp.dest('dist/baicaijia'));
-
-    gulp.src('dist/baicaijia/index.html')
-        .pipe(gulp.dest('./'));
 });
 
 gulp.task('htmls', function() {
     gulp.src(['src/guoneisales/**/*.html', 'src/guoneisales/index.html'])
-        .pipe(htmlReplace({
-            style: gulp.src('src/guoneisales/html/common/style.html'),
-            aside: gulp.src('src/guoneisales/html/common/aside.html'),
-            header: gulp.src('src/guoneisales/html/common/header.html')
-        }))
         .pipe(htmlmin({
             collapseWhitespace: true, // 去掉空白字符
             minifyJS: true, //压缩页面JS
@@ -76,12 +63,14 @@ gulp.task('jsLib', function() {
 
 
 var jsModules = [
-    //首页
+    //白菜价
     'src/baicaijia/js/index.js',
-    //用户
-    'src/baicaijia/js/content.js',
+    'src/baicaijia/js/sort.js',
+    'src/baicaijia/js/itcastEvent.js',
+    //国内折扣
     'src/guoneisales/js/index.js',
-    'src/guoneisales/js/sample.js'
+    'src/guoneisales/js/sample.js',
+    'src/guoneisales/js/detail.js'
 ]
 gulp.task('js', function() {
     jsModules.forEach(function(jspath) {
@@ -91,6 +80,7 @@ gulp.task('js', function() {
         browserify(jspath).bundle()
             .pipe(source(jsName))
             .pipe(buffer())
+            .pipe(uglify())
             .pipe(gulp.dest('dist/' + path.join('/')));
 
     })

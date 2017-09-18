@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./less/index.css">
+    <link rel="stylesheet" href="./css/index.css">
     <title>慢慢买国内折扣列表</title>
 </head>
 
@@ -22,9 +22,13 @@
             <ul class="clearfix" id="menu">
                 <!-- {{@ $value.productComment}} {{@ $value.productFrom}} {{@ $value.productTips}} {{@ $value.productTips}} {{@ $value.productName}}  -->
             </ul>
-
         </div>
         <!--底部-->
+        <div class="pageloading"><img src="../../images/loading.gif" alt="" width="32" height="32"></div>
+        <div class="sharelink">
+            <div class="topic">首页 > 超值推荐 ></div>
+            <span>国内折扣</span>
+        </div>
         <div class="m_foot">
             <!--底部登陆-->
             <div class="m_login">
@@ -45,7 +49,7 @@
         <!-- 固定定位置顶 -->
         <a class='m_iconTop' href=""><img src="../../images/top.png" alt="" width='45'></a>
     </div>
-    <script src="../../dist/baicaijia/js/lib.js "></script>
+    <script src="../baicaijia/js/lib.js "></script>
     <script type="text/tem" id="sampleList">
         {{each $data $value $i}}
         <li>
@@ -76,16 +80,7 @@
         </div>
         {{/each}}
     </script>
-    <script>
-        //商品展示信息回显
-        $.get('http://139.199.192.48:9090/api/getinlanddiscount', function(data) {
-                $("#menu").html(template("sampleList", data.result));
-            })
-            //商品详情展示
-        $("#menu").on("click", "a", function() {
-            var data = parseInt($(this).attr("data-id"));
-            location.href = './html/sample/sample.html?productid=' + data;
-        })
+    <script src="./js/index.js">
     </script>
 
 </body>

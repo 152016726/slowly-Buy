@@ -154,7 +154,7 @@ body,
 .sort_view {
   padding-top: 88px;
   position: relative;
-  margin-right: 2px;
+  padding-right: 2px;
 }
 header {
   height: 50px;
@@ -231,6 +231,10 @@ header h4 {
   border-bottom: 2px solid red;
   color: #f10215;
 }
+.goodshow {
+  width: 100%;
+  overflow: hidden;
+}
 .goodshow #goods {
   font-size: 14px;
   font-family: "微软雅黑";
@@ -252,6 +256,13 @@ header h4 {
   top: -6px;
   left: 0;
   background-color: #F7F7F7;
+}
+.goodshow #goods li .buyfor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 .goodshow #goods li .gobuy {
   display: block;
@@ -374,6 +385,13 @@ header h4 {
   color: #fff;
   background-color: #ff5e5d;
 }
+.pageloading {
+  width: 100%;
+  margin-top: 15px;
+  font-size: 16px;
+  background: #f8f8f8;
+  text-align: center;
+}
 /*底部*/
 .m_foot {
   /*底部登陆*/
@@ -412,6 +430,10 @@ header h4 {
 }
 .m_foot .m_footer .m_en {
   font-size: 14px;
+}
+.m_foot .m-1 > a:nth-child(1) {
+  color: #f10215;
+  margin-right: 5px;
 }
 /*返回顶部图标*/
 .m_iconTop {

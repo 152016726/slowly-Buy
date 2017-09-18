@@ -140,7 +140,15 @@ header{
           height: 120px;
           }
         }
-        
+        .lgImg{
+          width: 100%;
+          margin-top:20px;
+          img{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+          }
+        } 
       }
       .gobuy{
         display: block;
@@ -188,6 +196,24 @@ header{
     }
 
   }
+  .more{
+    background: #F2F2F2;
+    .morecomments{
+      padding-top:10px;
+      a{
+        display: block;
+        margin:0 auto;
+        height: 30px;
+        width: 340px;
+        color:#fff;
+        background-color: #FF9000;
+        font-size: 14px;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 34px;
+      }
+    }
+  }
     .shareLink{ 
       height: 36px;
       line-height: 36px;
@@ -211,19 +237,51 @@ header{
   }
 }
 
+//放在外部的share盒子小写区分
+ .sharelink{ 
+      height: 36px;
+      line-height: 36px;
+      font-size: 14px;
+      color: #000;  
+      width: 100%;
+      background-color: #ebebeb;
+      vertical-align: middle;
+      background: -webkit-gradient(linear,0 0,0 100%,from(#ffffff),to(#ebebeb));
+      span{
+        float: left;
+        width: 200px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .topic{
+        padding-left: 8px;
+       float:left;
+      }
+  }
+
+//loading盒子
+.pageloading{
+  width:100%;
+  margin-top:15px;
+  font-size: 16px;
+  background: #f8f8f8;
+  text-align: center;
+}
+
   //底部固定
 /*底部*/
 .m_foot{
   position: relative;
+  background: #efefef;
+  padding-top:25px;
         /*底部登陆*/
-        .m_login{
-                margin-top: 10px;
+                .m_login{
                     background: #efefef;
                     border-top: 1px solid #c4c4c4;
                     border-bottom: 1px solid #c4c4c4;
                     height: 34px;
                     line-height: 34px;
-                    margin-top: 25px;
                     clear: both;
                     a{
                         box-sizing: border-box;

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./less/index.css">
+    <link rel="stylesheet" href="./css/index.css">
     <title>慢慢买白菜价</title>
 </head>
 
@@ -31,6 +31,7 @@
             </ul>
         </div>
         <!--底部-->
+        <div class="pageloading"><img src="../../images/loading.gif" alt="" width="32" height="32"></div>
         <div class="m_foot">
             <!--底部登陆-->
             <div class="m_login">
@@ -39,7 +40,10 @@
                 <a href="" style="width:40%;border:0;"><span class="glyphicon glyphicon-arrow-up"></span>返回顶部</a>
             </div>
             <!--尾部-->
+            <!-- 尾部小字 -->
             <div class="m_footer">
+                <p class="m-1"> <a href="http://m.manmanbuy.com/?o=download">手机APP下载</a><a href="http://m.manmanbuy.com">慢慢买手机版</a>
+                    <a href=""></a> -- 掌上比价平台</p>
                 <p class='m_en'>
                     m.manmanbuy.com
                     <img src="" alt="">
@@ -50,16 +54,16 @@
         <a class='m_iconTop' href=""><img src="../../images/top.png" alt="" width='45'></a>
 
     </div>
-    <script src="../../dist/baicaijia/js/lib.js "></script>
-    <script src="js/itcastEvent.js"></script>
-    <script src="js/sort.js"></script>
+    <!-- <script src="./js/lib.js "></script> -->
+    <script src="./js/lib.js"></script>
     <script type="text/javascript ">
         var myscroll = new IScroll("#wrapper", {
             scrollX: true,
             scrollY: false,
             hScrollbar: false,
             vScrollbar: false,
-            vScroll: false
+            vScroll: false,
+            X: 0
         })
     </script>
     <script type="text/tem" id="listSample">
@@ -72,7 +76,7 @@
     <script type="text.temp" id="listgoods">
         {{each $data item i}}
         <li class="clearfix pr" data-id="{{item.productId}}" data-tid="{{item.titleId}}">
-            <a href="javascript:;"></a>
+            <a href="http://www.tabao.com" class="buyfor"></a>
             <div class="pic">{{@ item.productImg}} </div>
             <div class="info">
                 <div class="t">
@@ -88,28 +92,7 @@
         </li>
         {{/each}}
     </script>
-    <script>
-        $.get("http://139.199.192.48:9090/api/getbaicaijiatitle", function(data) {
-            $(".category_nav").html(template("listSample", data.result));
-            //设置第一个li的class类名
-            $(".category_nav").children().eq(0).addClass("active");
-        })
-        $(".category_nav").on("click", "a", function() {
-            var data = parseInt($(this).attr("data-id"));
-            console.log($(this).attr("data-id"));
-            $.get("http://139.199.192.48:9090/api/getbaicaijiaproduct", {
-                titleid: data
-            }, function(data) {
-                $("#goods").html(template("listgoods", data.result));
-            })
-        })
-
-        //商品展示回显
-        $.get("http://139.199.192.48:9090/api/getbaicaijiaproduct", {
-            titleid: 0
-        }, function(data) {
-            $("#goods").html(template("listgoods", data.result));
-        })
+    <script src="./js/index.js">
     </script>
 </body>
 

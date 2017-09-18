@@ -124,3 +124,4 @@ function itcastEvent(dom) {
         }
     };
 }
+module.exports = itcastEvent;

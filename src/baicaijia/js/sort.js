@@ -6,6 +6,7 @@
 	  1） 点击的时候往上移动的距离 就是当前点击li标签的前面所有li标签的高度和
 		2） 如何获取当前点击的li-
 */
+var itcastEvent = require("./itcastEvent.js");
 swpie();
 
 function swpie() {
@@ -90,14 +91,22 @@ function swpie() {
             }
         }
 
-        // 点击需要移动的距离
-        var totalDis = -index * li.offsetWidth;
-        if (totalDis > 0) {
-            totalDis = 0;
-        } else if (totalDis < maxDis) {
-            totalDis = maxDis;
+        // 点击需要移动的每个li宽度或者高度都相等的情况下距离
+        // var totalDis = -index * li.offsetWidth;
+        // if (totalDis > 0) {
+        //     totalDis = 0;
+        // } else if (totalDis < maxDis) {
+        //     totalDis = maxDis;
+        // }
+        // distance = totalDis;
+        // menu_ul.style.transform = "translateX(" + totalDis + "px)";
+
+        //每个li不相等情况下移动的距离
+        var totalDis = -li.offsetLeft;
+        distance += totalDis;
+        if (distance < maxDis) {
+            distance = maxDis;
         }
-        distance = totalDis;
-        menu_ul.style.transform = "translateX(" + totalDis + "px)";
+        menu_ul.style.transform = "translateX(" + distance + "px)";
     });
 }
