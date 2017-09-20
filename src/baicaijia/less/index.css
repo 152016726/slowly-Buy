@@ -385,13 +385,6 @@ header h4 {
   color: #fff;
   background-color: #ff5e5d;
 }
-.pageloading {
-  width: 100%;
-  margin-top: 15px;
-  font-size: 16px;
-  background: #f8f8f8;
-  text-align: center;
-}
 /*底部*/
 .m_foot {
   /*底部登陆*/

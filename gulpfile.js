@@ -9,19 +9,47 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var concat = require('gulp-concat');
 var htmlReplace = require('gulp-html-replace');
-
+//罗杰祥的白菜价
 gulp.task('less', function() {
     gulp.src('./src/baicaijia/less/*.less')
         .pipe(less())
         .pipe(cleancss())
         .pipe(gulp.dest('./dist/baicaijia/css'));
 });
+
+//罗杰祥的国内折扣
 gulp.task('lesses', function() {
-    gulp.src('./src/guoneisales/less/*.less')
+    gulp.src('./src/inlanddiscount/less/*.less')
         .pipe(less())
         .pipe(cleancss())
-        .pipe(gulp.dest('./dist/guoneisales/css'));
+        .pipe(gulp.dest('./dist/inlanddiscount/css'));
 });
+
+//张丹丹的商城主页和省钱控
+gulp.task('less1', function() {
+    gulp.src('./src/moneyctrl/css/*.less')
+        .pipe(less())
+        .pipe(cleancss())
+        .pipe(gulp.dest('./dist/moneyctrl/css'));
+});
+
+//孙雪玉的品牌大全，商城导航，凑单品
+gulp.task('less2', function() {
+    gulp.src('./src/all/less/*.less')
+        .pipe(less())
+        .pipe(cleancss())
+        .pipe(gulp.dest('./dist/all/css'));
+});
+
+//卢沛基的比价搜索和海淘折扣和优惠券
+gulp.task('less3', function() {
+    gulp.src('./src/lpj/less/*.less')
+        .pipe(less())
+        .pipe(cleancss())
+        .pipe(gulp.dest('./dist/lpj/css'));
+});
+
+//罗杰祥的白菜价
 gulp.task('html', function() {
     gulp.src(['src/baicaijia/**/*.html', 'src/baicaijia/index.html'])
         .pipe(htmlmin({
@@ -32,16 +60,51 @@ gulp.task('html', function() {
         }))
         .pipe(gulp.dest('dist/baicaijia'));
 });
-
+//罗杰祥的国内折扣
 gulp.task('htmls', function() {
-    gulp.src(['src/guoneisales/**/*.html', 'src/guoneisales/index.html'])
+    gulp.src(['src/inlanddiscount/**/*.html', 'src/inlanddiscount/index.html'])
         .pipe(htmlmin({
             collapseWhitespace: true, // 去掉空白字符
             minifyJS: true, //压缩页面JS
             minifyCSS: true, //压缩页面CSS
             removeComments: true //清除HTML注释
         }))
-        .pipe(gulp.dest('dist/guoneisales'));
+        .pipe(gulp.dest('dist/inlanddiscount'));
+});
+//张丹丹的商城主页和省钱控
+gulp.task('htmls1', function() {
+    gulp.src(['src/moneyctrl/**/*.html', 'src/moneyctrl/moneyctrl.html'])
+        .pipe(htmlmin({
+            collapseWhitespace: true, // 去掉空白字符
+            minifyJS: true, //压缩页面JS
+            minifyCSS: true, //压缩页面CSS
+            removeComments: true //清除HTML注释
+        }))
+        .pipe(gulp.dest('dist/moneyctrl'));
+});
+
+//孙雪玉的品牌大全，商城导航，凑单品
+gulp.task('htmls2', function() {
+    gulp.src('src/all/**/*.html')
+        .pipe(htmlmin({
+            collapseWhitespace: true, // 去掉空白字符
+            minifyJS: true, //压缩页面JS
+            minifyCSS: true, //压缩页面CSS
+            removeComments: true //清除HTML注释
+        }))
+        .pipe(gulp.dest('dist/all'));
+});
+
+//卢沛基的比价搜索和海淘折扣和优惠券
+gulp.task('htmls3', function() {
+    gulp.src('src/lpj/**/*.html')
+        .pipe(htmlmin({
+            collapseWhitespace: true, // 去掉空白字符
+            minifyJS: true, //压缩页面JS
+            minifyCSS: true, //压缩页面CSS
+            removeComments: true //清除HTML注释
+        }))
+        .pipe(gulp.dest('dist/lpj'));
 });
 
 //包装第三方插件
@@ -49,7 +112,8 @@ var jsLibs = [
     'node_modules/art-template/lib/template-web.js',
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/bootstrap/dist/js/bootstrap.min.js',
-    'node_modules/iscroll/build/iscroll.js'
+    'node_modules/iscroll/build/iscroll.js',
+    'node_modules/nprogress/nprogress.js'
 ];
 //合并第三方插件为一个
 gulp.task('jsLib', function() {
@@ -68,9 +132,29 @@ var jsModules = [
     'src/baicaijia/js/sort.js',
     'src/baicaijia/js/itcastEvent.js',
     //国内折扣
-    'src/guoneisales/js/index.js',
-    'src/guoneisales/js/sample.js',
-    'src/guoneisales/js/detail.js'
+    'src/inlanddiscount/js/index.js',
+    'src/inlanddiscount/js/sample.js',
+    'src/inlanddiscount/js/detail.js',
+    //省钱控
+    'src/moneyctrl/js/detail.js',
+    'src/moneyctrl/js/index.js',
+    'src/moneyctrl/js/moneyctrl.js',
+    'src/moneyctrl/js/title.js',
+    //品牌大全，商城导航，凑单品
+    'src/all/js/brandTitle.js',
+    'src/all/js/edit1.js',
+    'src/all/js/goTop.js',
+    'src/all/js/gsproduct.js',
+    'src/all/js/sitenav.js',
+    'src/all/js/title.js',
+    //比价搜索，海淘折扣，优惠券
+    'src/lpj/js/bijia.js',
+    'src/lpj/js/bijia1.js',
+    'src/lpj/js/bijia2.js',
+    'src/lpj/js/haitao.js',
+    'src/lpj/js/quan.js',
+    'src/lpj/js/quan1.js',
+    'src/lpj/js/util.js'
 ]
 gulp.task('js', function() {
     jsModules.forEach(function(jspath) {
@@ -90,4 +174,4 @@ gulp.task('build', function() {
     gulp.run(['less', 'js', 'jsLib', 'html']);
 });
 //添加默认追踪的任务
-gulp.task('default', ['html', 'less', 'lesses', 'js', 'htmls', 'jsLib']);
+gulp.task('default', ['html', 'less1', 'less3', 'less2', 'less', 'lesses', 'js', 'htmls', 'htmls1', 'htmls2', 'htmls3', 'jsLib']);
